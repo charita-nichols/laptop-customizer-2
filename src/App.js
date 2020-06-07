@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Total from "./components/Total";
-import Cart from "./components/Cart";
+import Header from "./components/Header/Header";
+import Total from "./components/Total/Total";
+import Cart from "/components/Cart";
 
-import Features from "./components/Features";
-import Summary from "./components/Summary";
+import Features from "./components/Features/Features";
+import Summary from "./components/Summary/Summary";
 // This object will allow us to
 // easily convert numbers into US dollar values
 
-const USCurrencyFormat = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+//const USCurrencyFormat = new Intl.NumberFormat("en-US", {
+//style: "currency",
+//currency: "USD",
+//});
 
 class App extends Component {
   state = {
