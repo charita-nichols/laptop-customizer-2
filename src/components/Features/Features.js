@@ -1,6 +1,6 @@
 import React from "react";
 import slugify from "slugify";
-import Features from "./Features";
+import Feature from "./Feature";
 
 const USCurrencyFormat = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -39,5 +39,11 @@ export default function features(props) {
       </fieldset>
     );
   });
+
+  return (
+    <form className="main__form">
+      <Feature />
+      {features}
+    </form>
+  );
 }
-return features;

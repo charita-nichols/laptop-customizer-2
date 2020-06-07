@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import Features from "src/components/Features";
-import Summary from "src/components/Summary";
-import Total from "src/components/Total";
+import Header from "./components/Header";
+import Total from "./components/Total";
+import Cart from "./components/Cart";
 
+import Features from "./components/Features";
+import Summary from "./components/Summary";
 // This object will allow us to
 // easily convert numbers into US dollar values
 
@@ -14,6 +16,49 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 
 class App extends Component {
   state = {
+    FEATURES: {
+      Processor: [
+        {
+          name: "17th Generation Intel Core HB (7 Core with donut spare)",
+          cost: 700,
+        },
+        {
+          name: "Professor X AMD Fire Breather with sidewinder technology",
+          cost: 1200,
+        },
+      ],
+      "Operating System": [
+        {
+          name: "Ubuntu Linux 16.04",
+          cost: 200,
+        },
+        {
+          name: "Bodhi Linux",
+          cost: 300,
+        },
+      ],
+      "Video Card": [
+        {
+          name: "Toyota Corolla 1.5v",
+          cost: 1150.98,
+        },
+        {
+          name: "Mind mild breeze 2000",
+          cost: 1345,
+        },
+      ],
+      Display: [
+        {
+          name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
+          cost: 1500,
+        },
+        {
+          name: '15.3" HGTV (3840 x 2160) Home makeover edition',
+          cost: 1400,
+        },
+      ],
+    },
+
     selected: {
       Processor: {
         name: "17th Generation Intel Core HB (7 Core with donut spare)",
@@ -45,56 +90,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            {features}
-          </form>
+          {/* <CustomizeHeader /> */}
+          <Features
+            features={this.state.FEATURES}
+            selected={this.state.selected}
+            updateFeature={this.updateFeature}
+          />
+          {/* <Customize Features={features} /> */}
           <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
+            <Cart />
+            <Summary selected={this.state.selected} />
+            <Total selected={this.state.selected} />
           </section>
         </main>
       </div>
     );
   }
 }
-//       <div className="App">
-//         <header>
-//           <h1>ELF Computing | Laptops</h1>
-//         </header>
-//         <main>
-//           <form className="main__form">
-//             <h2>Customize your laptop</h2>
-//             <Features
-//               features={this.props.features}
-//               selected={this.state.selected}
-//               updateFeature={this.updateFeature}
-//             />
-//           </form>
-//           <section className="main__summary">
-//             <h2>Your cart</h2>
-//             <Summary selected={this.state.selected} />
-//             <div className="summary__total">
-//               <div className="summary__total__label">Total</div>
-//               <div className="summary__total__value">
-//                 <Total selected={this.state.selected} />
-//               </div>
-//             </div>
-//           </section>
-//         </main>
-//       </div>
-//     );
-//   }
-// }
-
 export default App;
