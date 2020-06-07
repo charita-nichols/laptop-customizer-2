@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React from "react";
 import slugify from "slugify";
 import Feature from "./Feature";
@@ -10,9 +11,8 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 export default function features(props) {
   const features = Object.keys(props.features).map((feature, idx) => {
     const featureHash = feature + "-" + idx;
-    const options = this.props.features[feature].map((item) => {
+    const options = props.features[feature].map((item) => {
       const itemHash = slugify(JSON.stringify(item));
-
       return (
         <div key={itemHash} className="feature__item">
           <input
@@ -45,5 +45,7 @@ export default function features(props) {
       <Feature />
       {features}
     </form>
-  );
+
+  )
+
 }
